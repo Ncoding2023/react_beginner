@@ -1,4 +1,5 @@
 20240801
+5.CREATE REACT APP
 터미널 시작
 
 node.js 설치 후
@@ -24,3 +25,14 @@ import styles from "./Button.module.css";
 import Button from "./Button";
 
 ="" -> ={}으로 표시
+
+6.EFFECTS
+  const [value, setValue] = useState(초기값);
+  const onEvent = () => setValue((event) => event + 1);
+  return(
+     <button onClick={onEvent}>cilck me</button>
+  );
+
+useState()의 ()안에 초기값 입력하며 버튼에 클릭 이벤트로 {}안에 함수 선언으로
+setValue는 value를 함수에서 사용할때 사용
+setValue는 value의 별명? 같은 느낌
