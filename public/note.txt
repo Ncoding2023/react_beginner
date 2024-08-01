@@ -1,0 +1,26 @@
+20240801
+터미널 시작
+
+node.js 설치 후
+
+cmd창에서
+node -v
+버전 확인
+npx create-react-app 프로젝트명
+프로젝트 생성
+
+vs 터미널 창에서
+npm start
+시작
+npm i prop -types
+prop 설치
+
+className={styles.btn} 클래스명 정의시 
+
+imfort 
+Ex)
+import PropTypes from "prop-types";
+import styles from "./Button.module.css";
+import Button from "./Button";
+
+="" -> ={}으로 표시
