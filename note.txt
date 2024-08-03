@@ -1,0 +1,62 @@
+20240801
+5.CREATE REACT APP
+터미널 시작
+
+node.js 설치 후
+
+cmd창에서
+node -v
+버전 확인
+npx create-react-app 프로젝트명
+프로젝트 생성
+
+vs 터미널 창에서
+npm start
+시작
+npm i prop -types
+prop 설치
+
+className={styles.btn} 클래스명 정의시 
+
+imfort 
+Ex)
+import PropTypes from "prop-types";
+import styles from "./Button.module.css";
+import Button from "./Button";
+
+="" -> ={}으로 표시
+
+6.0 EFFECTS
+  const [value, setValue] = useState(초기값);
+  const onEvent = () => setValue((event) => event + 1);
+  return(
+     <button onClick={onEvent}>cilck me</button>
+  );
+
+useState()의 ()안에 초기값 입력하며 버튼에 클릭 이벤트로 {}안에 함수 선언으로
+setValue는 value를 함수에서 사용할때 사용
+setValue는 value의 별명? 같은 느낌
+
+20240803
+6.2 EFFECTS
+  useEffect(() => {
+    console.log("I run only once.");
+  }, []);
+  useEffect(() => {
+      console.log("keyword");
+  }, [keyword]);
+  useEffect(() => {
+      console.log("cilck");
+  }, [cilck]);
+  useEffect(() => {
+      console.log("keyword & cilck");
+  }, [keyword, cilck]);
+
+    useEffect(() => {
+    (이벤트);
+}, [조건 키워드]);
+
+Effect는 처음 시작하며 동작하며 []에 특정 조건을 충족 하면 동작
+조건이 복수인 경우 1개라도 충족하면 동작
+
+
