@@ -1,12 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+function Hello() {
+  // function closeFn() {
+  //   console.log("close :(");
+  // }
+  // function openFn() {
+  //   console.log("open :)");
+  //   return closeFn;
+  // }
+  useEffect(() => {
+    console.log("open :)");
+    return () => console.log("close :(");
+  },[]);
+  useEffect(function (){
+    console.log("open :)");
+    return function() {
+      console.log("close :(");
+    }
+  },[]);
+  return  <h1>Hello</h1>
+}
 
 function App() {
-  const [counter, setValue] = useState(0);
-  const onClick = () => setValue((prev) => prev + 1);
-    return (
+  const [showing,setShowing] = useState(false);
+  const onClick = () => setShowing(prev => !prev);
+  return  (
     <div>
-      <h1>{counter}!</h1>
-      <button onClick={onClick}>cilck me</button>
+      {showing ? <Hello/> : null}
+      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
     </div>
   );
 }

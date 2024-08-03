@@ -1,0 +1,80 @@
+20240801
+5.CREATE REACT APP
+터미널 시작
+
+node.js 설치 후
+
+cmd창에서
+node -v
+버전 확인
+npx create-react-app 프로젝트명
+프로젝트 생성
+
+vs 터미널 창에서
+npm start
+시작
+npm i prop -types
+prop 설치
+
+className={styles.btn} 클래스명 정의시 
+
+imfort 
+Ex)
+import PropTypes from "prop-types";
+import styles from "./Button.module.css";
+import Button from "./Button";
+
+="" -> ={}으로 표시
+
+6.0 EFFECTS
+  const [value, setValue] = useState(초기값);
+  const onEvent = () => setValue((event) => event + 1);
+  return(
+     <button onClick={onEvent}>cilck me</button>
+  );
+
+useState()의 ()안에 초기값 입력하며 버튼에 클릭 이벤트로 {}안에 함수 선언으로
+setValue는 value를 함수에서 사용할때 사용
+setValue는 value의 별명? 같은 느낌
+
+20240803
+6.2 EFFECTS
+  useEffect(() => {
+    console.log("I run only once.");
+  }, []);
+  useEffect(() => {
+      console.log("keyword");
+  }, [keyword]);
+  useEffect(() => {
+      console.log("cilck");
+  }, [cilck]);
+  useEffect(() => {
+      console.log("keyword & cilck");
+  }, [keyword, cilck]);
+
+    useEffect(() => {
+    (이벤트);
+}, [조건 키워드]);
+
+정리
+Effect는 처음 시작하며 렌더링하며 []에 특정 조건을 충족 하면 렌더링
+조건이 복수인 경우 1개라도 충족하면 렌더링
+
+• 리액트를 사용하는 이유: 최소 단위의 렌더링을 위해
+• useState(): 변수, 변수를 제어하는 함수로 구성되며 변하는 값을 제어,
+ 해당 부분의 리렌더링을 위함
+• props: 태그의 속성 값을 함수의 아규먼트 처럼 컴포넌트에 값을 전달해준다.
+• useEffect(): 코드의 실행 시점을 관리할 수 있는 선택권을 얻는 방어막 같은 존재,
+ 디펜던시가 없을 경우 최초 1회 실행, 있을 경우 해당 값이 변할 경우 실행한다.
+  이 때 디펜던시는 여러개 입력이 가능하다.
+
+부모 컴포넌트에서 리렌더링이 일어날 경우 모든 자식들이 리렌더링이 된다.(wa can use memo)
+propType을 설치하고 props의 타입을 지정해 줄 수 있다. 이 때 isRequired로 필수값을 지정 가능
+
+6.4 Cleanup
+  useEffect()는 함수 호출시 최초 1회 레더링하며 
+  return은 해당 컴포넌트가 소실된 경우 렌더링된다.
+() => {} 
+function() {}
+같은 쓰임새
+
