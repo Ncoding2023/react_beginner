@@ -26,7 +26,8 @@ import Button from "./Button";
 
 ="" -> ={}으로 표시
 
-6.0 EFFECTS
+6.EFFECTS
+.0 Introduction 
   const [value, setValue] = useState(초기값);
   const onEvent = () => setValue((event) => event + 1);
   return(
@@ -38,7 +39,7 @@ setValue는 value를 함수에서 사용할때 사용
 setValue는 value의 별명? 같은 느낌
 
 20240803
-6.2 EFFECTS
+.2 useEffect Deps 
   useEffect(() => {
     console.log("I run only once.");
   }, []);
@@ -71,10 +72,23 @@ Effect는 처음 시작하며 렌더링하며 []에 특정 조건을 충족 하�
 부모 컴포넌트에서 리렌더링이 일어날 경우 모든 자식들이 리렌더링이 된다.(wa can use memo)
 propType을 설치하고 props의 타입을 지정해 줄 수 있다. 이 때 isRequired로 필수값을 지정 가능
 
-6.4 Cleanup
+.4 Cleanup
   useEffect()는 함수 호출시 최초 1회 레더링하며 
   return은 해당 컴포넌트가 소실된 경우 렌더링된다.
 () => {} 
 function() {}
 같은 쓰임새
+
+7.Practice Movie App
+.0 To Do List part One
+
+const food = [1,2,3,4]
+[5, food] // 이런 식으로 요소를 추가한다면 아래와 같은 결과.
+-> [5, food[]]
+Array 안에 또 다른 Array가 중첩되는 결과.
+
+그래서 아래와 같이 추가하면 됨.
+[5, ...food]
+-> [5, 1, 2, 3, 4]
+★앞에 [ ... ]을 추가하면 Array의 element 들을 돌려주게 됨.
 
