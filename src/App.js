@@ -2,46 +2,43 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [coins, setCoins] = useState([]);
-  useEffect(() => {
-    fetch("https://api.coinpaprika.com/v1/tickers?limit=10")
-      .then((response) => response.json())
-      .then((json) => {
-        setCoins(json);
-        setLoading(false);
-      });
-  }, []);
-
-  const [inputMap, setInputMap] = useState();
-  const selectOnChange = (event) => {
-    const selectedOption = JSON.parse(event.target.value);
-    setInputMap(selectedOption);
+  const [movies, setMovies] = useState([]);
+  const getMovies = async () => {
+    const json = await (
+      await fetch(
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year`
+      )
+    ).json();
+    setMovies(json.data.movies);
+    setLoading(false);
   };
-  // console.log("inputMap ===>>",inputMap);
+
+  useEffect(() => {
+    getMovies();
+  }, []);
 
   return (
     <div>
-      <h1>The Coins! {loading ? "" : `(${coins.length})`}</h1>
       {loading ? (
-        <strong>Loading...</strong>
+        <h1>Loading...</h1>
       ) : (
-        <select onChange={selectOnChange}>
-          {coins.map((coin, index) => (
-            <option value={JSON.stringify(coin)} key={index}>
-              {coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD{" "}
-            </option>
+        <div>
+          {movies.map((movie) => (
+            <div key={movie.id}>
+              <img src={movie.medium_cover_image} />
+              <h2>{movie.title}</h2>
+              <p>{movie.summary}</p>
+              <ul>
+                {movie.genres.map((g) => (
+                  <li key={g}>{g}</li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </select>
-      )}
-      <hr></hr>
-      {inputMap === undefined ? null : (
-        <input value={inputMap.symbol} readOnly disabled />
-      )}
-
-      {inputMap === undefined ? null : (
-        <input value={inputMap.quotes.USD.price} readOnly disabled />
+        </div>
       )}
     </div>
   );
 }
+
 export default App;
