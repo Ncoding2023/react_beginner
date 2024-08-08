@@ -1,0 +1,189 @@
+20240801
+5.CREATE REACT APP
+터미널 시작
+
+node.js 설치 후
+
+cmd창에서
+node -v
+버전 확인
+npx create-react-app 프로젝트명
+프로젝트 생성
+
+vs 터미널 창에서
+npm start
+시작
+npm i prop -types
+prop 설치
+
+className={styles.btn} 클래스명 정의시 
+
+imfort 
+Ex)
+import PropTypes from "prop-types";
+import styles from "./Button.module.css";
+import Button from "./Button";
+
+="" -> ={}으로 표시
+
+
+6.EFFECTS
+.0 Introduction 
+  const [value, setValue] = useState(초기값);
+  const onEvent = () => setValue((event) => event + 1);
+  return(
+     <button onClick={onEvent}>cilck me</button>
+  );
+
+useState()의 ()안에 초기값 입력하며 버튼에 클릭 이벤트로 {}안에 함수 선언으로
+setValue는 value를 함수에서 사용할때 사용
+setValue는 value의 별명? 같은 느낌
+
+
+20240803
+.2 useEffect Deps 
+  useEffect(() => {
+    console.log("I run only once.");
+  }, []);
+  useEffect(() => {
+      console.log("keyword");
+  }, [keyword]);
+  useEffect(() => {
+      console.log("cilck");
+  }, [cilck]);
+  useEffect(() => {
+      console.log("keyword & cilck");
+  }, [keyword, cilck]);
+
+    useEffect(() => {
+    (이벤트);
+}, [조건 키워드]);
+
+정리
+Effect는 처음 시작하며 렌더링하며 []에 특정 조건을 충족 하면 렌더링
+조건이 복수인 경우 1개라도 충족하면 렌더링
+
+• 리액트를 사용하는 이유: 최소 단위의 렌더링을 위해
+• useState(): 변수, 변수를 제어하는 함수로 구성되며 변하는 값을 제어,
+ 해당 부분의 리렌더링을 위함
+• props: 태그의 속성 값을 함수의 아규먼트 처럼 컴포넌트에 값을 전달해준다.
+• useEffect(): 코드의 실행 시점을 관리할 수 있는 선택권을 얻는 방어막 같은 존재,
+ 디펜던시가 없을 경우 최초 1회 실행, 있을 경우 해당 값이 변할 경우 실행한다.
+  이 때 디펜던시는 여러개 입력이 가능하다.
+
+부모 컴포넌트에서 리렌더링이 일어날 경우 모든 자식들이 리렌더링이 된다.(wa can use memo)
+propType을 설치하고 props의 타입을 지정해 줄 수 있다. 이 때 isRequired로 필수값을 지정 가능
+
+
+.4 Cleanup
+  useEffect()는 함수 호출시 최초 1회 레더링하며 
+  return은 해당 컴포넌트가 소실된 경우 렌더링된다.
+() => {} 
+function() {}
+같은 쓰임새
+
+
+7.Practice Movie App
+.0 To Do List part One
+const food = [1,2,3,4]
+[5, food] // 이런 식으로 요소를 추가한다면 아래와 같은 결과.
+-> [5, food[]]
+Array 안에 또 다른 Array가 중첩되는 결과.
+
+그래서 아래와 같이 추가하면 됨.
+[5, ...food]
+-> [5, 1, 2, 3, 4]
+★앞에 [ ... ]을 추가하면 Array의 element 들을 돌려주게 됨.
+
+
+.1 To Do List part Two
+리액트는 기본적으로 list에 있는 모든 item을 인식하기 때문에 key를 넣어 고유하게 만들어줘야함
+map의 첫 번째 argument는 값이고 두번째는 index 즉 숫자를 의미함
+그래서 {toDos.map((item, index) => {item})}
+만들어줌
+즉, {{item},{item},{item}...}
+배열을 만들어 각자 고유의 key를 가지게 함
+
+
+.2 Coin Tracker
+https://api.coinpaprika.com/v1/tickers
+https://api.coinpaprika.com/v1/tickers?limit=10 이렇게 쿼리를 사용하시면 됩니다.
+https://api.coinpaprika.com를 참고하셔서 다양한 요청을 시도해보세요
+
+20240806
+코드 챌린지 추가로 코딩하며 해당 값의 map형태는
+ 태그의 {}애서 SON.stringify을 변환하며
+ 받은 값은 JSON.parse으로 변환 다시 변환하며 
+ key을 활용해서 value값을 표시한다.
+
+ .3 Movie App part One 
+https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year
+
+async/await는 비동기 작업을 처리하는 간편하고 직관적인 방법입니다.
+async 함수 내에서 await를 사용하여 비동기 작업의 완료를 기다릴 수 있습니다.
+리액트 컴포넌트에서는 useEffect 훅 내에서 비동기 함수를 호출하여 데이터를 가져오는 패턴이 일반적입니다.
+
+.4 Movie App part Two 
+npm install react-router-dom
+한게 없음
+
+
+20240808
+.5 React Router
+Switch = Routes 둘이 같은 역할하는 태그
+대문자 소문자 구분...
+
+7.6 Parameters
+Detail.js
+fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
+상세 페이지 접근하면서 id값으로 해당 영화 데이터정보를 가져온다
+이 값들을 사용할수 있다.
+
+json 데이터 공식
+.
+  const getEx = async () => {
+    const json = await(
+        await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
+        ).json();
+    };
+    useEffect(() => {
+        getEx();
+    }, []);
+
+.7 Publishing 
+
+npm i gh-pages
+//깃 설치
+package.json 파일 끝에 }} 사이에
+,
+  "homepage": "https://Ncoding2023/github.io/"
+  중간에 본인 username
+저장소가 없으면 생성하고 푸시할것
+
+git remote -v
+
+
+git config --global user.name
+로그인 확인
+git config --global user.name Ncoding2023
+유저이름 입력
+
+git config --global user.email
+git config --global user.email ncoding1@gmail.com
+유저이메일 입력
+
+git remote add origin https://github.com/Ncoding2023/react_beginner.git
+연결
+
+git clone https://github.com/Ncoding2023/react_beginner.git
+파일 복사
+
+git init
+초기화
+
+명령어추가
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
+
+npm run deploy
+git으로 배포하며 수정하고 업데이트하는 명령어
