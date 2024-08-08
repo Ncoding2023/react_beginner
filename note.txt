@@ -187,3 +187,8 @@ git init
 
 npm run deploy
 git으로 배포하며 수정하고 업데이트하는 명령어
+
+-rf node_modules/.cache
+rm -rf node_modules
+-rf node_modules/.cache
+rm -rf \Users\Coding\react-for-beginners\node_modules\.칟cache
