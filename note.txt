@@ -123,3 +123,7 @@ async/await는 비동기 작업을 처리하는 간편하고 직관적인 방법
 async 함수 내에서 await를 사용하여 비동기 작업의 완료를 기다릴 수 있습니다.
 리액트 컴포넌트에서는 useEffect 훅 내에서 비동기 함수를 호출하여 데이터를 가져오는 패턴이 일반적입니다.
 
+.4 Movie App part Two 
+npm install react-router-dom
+한게 없음
+
