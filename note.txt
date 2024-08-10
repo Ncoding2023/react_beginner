@@ -153,7 +153,7 @@ json 데이터 공식
 .7 Publishing 
 
 npm i gh-pages
-//깃 설치
+//깃 설치 및 올리기
 package.json 파일 끝에 }} 사이에
 ,
   "homepage": "https://Ncoding2023/github.io/"
@@ -192,3 +192,14 @@ git으로 배포하며 수정하고 업데이트하는 명령어
 rm -rf node_modules
 -rf node_modules/.cache
 rm -rf \Users\Coding\react-for-beginners\node_modules\.칟cache
+
+
+
+20240810
+.8 Conclusions 
+하는거 없음
+.9 Styles
+
+
+
+
